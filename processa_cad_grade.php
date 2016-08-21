@@ -1,13 +1,17 @@
 <?php
 	include_once("conexao.php");
 
-	$nome_prof = $_POST['nome'];
-	$fone_prof = $_POST['fone'];
-	$email_prof = $_POST['email'];
-	
-	//echo "$nome_prof - $fone_prof - $email_prof"
+	$nome_prof = $_POST['professor'];
+	$semestre = $_POST['semestre'];
+	$ano = $_POST['ano'];
+	$regime = $_POST['regime'];
+	$categoria = $_POST['categoria'];
+	$validade = $_POST['validade'];
+	$curso = $_POST['curso'];
 
-	$result_grade = "INSERT INTO grade(codigo_prof, hora_inicio, hora_fim, codigo_disc, curso, turno, dia_semana) VALUES ('$nome_prof','$fone_prof', '$email_prof')"; //Cadastra dados
+	//echo "$nome_prof, $semestre, $ano, $regime, $categoria, $validade, $curso";
+
+	$result_grade = "INSERT INTO grade(nome_prof, semestre, ano, validade, categoria, regime, curso) VALUES ('$nome_prof','$semestre', '$ano', '$validade', '$categoria', '$regime', '$curso')"; //Cadastra dados
 
 	$resultado_grade = mysqli_query($mysqli, $result_grade);
 

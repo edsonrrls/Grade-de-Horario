@@ -7,7 +7,7 @@
 	
 	//echo "$hora_inicio - $hora_fim - $turno"
 
-	$result_horario = "INSERT INTO horario(hora_inicio, hora_fim, turno) VALUES ('$hora_inicio','$hora_fim', '$turno')"; //Cadastra dados
+	$result_horario = "INSERT INTO horario(hora_inicio, hora_termino, turno) VALUES ('$hora_inicio','$hora_fim', '$turno')"; //Cadastra dados
 
 	$resultado_horario = mysqli_query($mysqli, $result_horario);
 
