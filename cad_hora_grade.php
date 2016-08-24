@@ -1,7 +1,7 @@
 <?php
 include ("conexao.php");
 
-$consulta = "SELECT * FROM grade";
+$consulta = "SELECT grade.cod_grade, grade.curso, professor.nome_prof FROM grade JOIN professor on grade.cod_prof = professor.cod_prof";
     $con = $mysqli->query($consulta) or die($mysqli->error);
 
 $consulta2 = "SELECT * FROM horario";
@@ -100,16 +100,16 @@ $consulta4 = "SELECT * FROM horario";
 			  <b>Informe os dados para cadastrar aula na grade de horários:</b>
 			</div>			
 
-        <form method="POST" action="processa_cad_grade.php">
+        <form method="POST" action="processa_cad_hora_grade.php">
             <!-- Inicio Professor -->
             <div class="form-group col-xl-12 col-md-6 col-sm-6">
                 <label for="professor">Nome do Professor:</label>
 
-                    <select class="form-control" name="professor" required>
+                    <select class="form-control" name="cod_grade" required>
                         <option value="">Escolha o professor</option>
                         <?php while ($dado = $con->fetch_array()){ ?>
                         <option value="<?php echo $dado["cod_grade"]; ?>">
-                            <?php echo $dado["nome_prof"]; ?>                             
+                            <?php echo $dado["nome_prof"]; ?> - <?php echo $dado["curso"]; ?>
                         </option>                    
                         <?php } ?>
                     </select>
@@ -119,10 +119,10 @@ $consulta4 = "SELECT * FROM horario";
             <div class="form-group col-xl-12 col-md-3 col-sm-3">
             <label for="curso">Nome da disciplina:</label>
 
-                <select class="form-control" name="semestre" required>
+                <select class="form-control" name="disciplina" required>
                     <option value="">Escolha a disciplina</option>
                     <?php while ($disc = $con3->fetch_array()){ ?>
-                        <option value="<?php echo $disc["nome_disc"]; ?>">
+                        <option value="<?php echo $disc["cod_disc"]; ?>">
                             <?php echo $disc["nome_disc"]; ?>                             
                         </option>                    
                         <?php } ?>                       
@@ -151,7 +151,7 @@ $consulta4 = "SELECT * FROM horario";
                         <?php } ?>                       
                 </select>
 
-                <label for="curso">Hora de início da aula:</label>
+                <label for="curso">Hora de termino da aula:</label>
 
                 <select class="form-control" name="fim" required>
                     <option value="">Escolha o horário</option>
@@ -162,19 +162,23 @@ $consulta4 = "SELECT * FROM horario";
                         <?php } ?>                       
                 </select>
 
+                <label for="curso">Dia da Semana:</label>
+
+                <select class="form-control" name="dia" required>
+                    <option value="">Escolha o dia</option>
+                    <option value="Segunda-Feira">Segunda-Feira</option>
+                    <option value="Terça-Feira">Terça-Feira</option>
+                    <option value="Quarta-Feira">Quarta-Feira</option>
+                    <option value="Quinta-Feira">Quinta-Feira</option>
+                    <option value="Sexta-Feira">Sexta-Feira</option>
+                    <option value="Sábado">Sábado</option>
+                </select>
+
 
             </div>
 
-          
-
-         
-
-            
-           
-          
-
              <div class="form-group col-xl-12 col-md-12 col-sm-12">
-              <button type="submit" class="btn btn-success">Cadastrar Grade</button>  
+              <button type="submit" class="btn btn-success">Cadastrar Aula</button>  
 
               <button type="reset" class="btn btn-danger">Cancelar</button>
             </div>  
@@ -213,7 +217,9 @@ $consulta4 = "SELECT * FROM horario";
 
 				<img src="png/fatec.png" width="200px">
 
-				<p class="footer-company-name">Grade Horários Digital &copy; 2016</p>
+				<p class="footer-company-name">Grade Horários Digital &copy; 2016
+                <br>Edson Asêncio Leal
+                <br>Lucilena de Lima</p>
 				
 			</div>
 

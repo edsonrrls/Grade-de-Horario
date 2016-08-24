@@ -11,7 +11,7 @@
 
 	//echo "$nome_prof, $semestre, $ano, $regime, $categoria, $validade, $curso";
 
-	$result_grade = "INSERT INTO grade(nome_prof, semestre, ano, validade, categoria, regime, curso) VALUES ('$nome_prof','$semestre', '$ano', '$validade', '$categoria', '$regime', '$curso')"; //Cadastra dados
+	$result_grade = "INSERT INTO grade(cod_prof, semestre, ano, validade, categoria, regime, curso) VALUES ('$nome_prof','$semestre', '$ano', '$validade', '$categoria', '$regime', '$curso')"; //Cadastra dados
 
 	$resultado_grade = mysqli_query($mysqli, $result_grade);
 

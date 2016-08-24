@@ -1,8 +1,31 @@
 <?php
     include("conexao.php");
 
-    $consulta = "SELECT * FROM grade JOIN professor on grade.cod_prof = professor.cod_prof";
+    $valor = $_POST['valor'];
+    $cod_grade = $_POST['cod_grade'];
+
+    $cod_prof = $valor;
+
+    $consulta = "SELECT * FROM grade JOIN professor on grade.cod_prof = professor.cod_prof WHERE grade.cod_prof ='$cod_prof' AND grade.cod_grade = '$cod_grade'";
     $con = $mysqli->query($consulta) or die($mysqli->error);
+
+    $consulta2 = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Segunda-Feira' AND hora_aula.cod_grade = '$cod_grade'";
+    $con2 = $mysqli->query($consulta2) or die($mysqli->error);
+
+    $consulta3 = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Terça-Feira' AND hora_aula.cod_grade = '$cod_grade'";
+    $con3 = $mysqli->query($consulta3) or die($mysqli->error);
+
+    $consulta4 = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Quarta-Feira' AND hora_aula.cod_grade = '$cod_grade'";
+    $con4 = $mysqli->query($consulta4) or die($mysqli->error);
+
+    $consulta5 = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Quinta-Feira' AND hora_aula.cod_grade = '$cod_grade'";
+    $con5 = $mysqli->query($consulta5) or die($mysqli->error);
+
+    $consulta6 = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Sexta-Feira' AND hora_aula.cod_grade = '$cod_grade'";
+    $con6 = $mysqli->query($consulta6) or die($mysqli->error);
+
+    $consultasab = "SELECT * FROM hora_aula JOIN grade on hora_aula.cod_grade = grade.cod_grade WHERE hora_aula.dia_semana = 'Sábado' AND hora_aula.cod_grade = '$cod_grade'";
+    $consab = $mysqli->query($consultasab) or die($mysqli->error);
 ?>
 
 <!DOCTYPE html>
@@ -90,13 +113,13 @@
 		<div class="panel-body col-xs-12 col-md-12">
 
             <div class="alert alert-success">
-              <b>Relação de grades horárias cadastradas:</b>
+              <b>Informaçoes sobre a grade cadastrada:</b>
             </div>
 		
 			  
             <table class="table">
                 <tr>                    
-                    <td><b>Código</b></td>                                        
+                    <td><b>Código da grade</b></td>                                        
                     <td><b>Professor</b></td>   
                     <td><b>Semestre</b></td>  
                     <td><b>Ano</b></td>  
@@ -104,7 +127,6 @@
                     <td><b>Categoria</b></td>  
                     <td><b>Regime</b></td>  
                     <td><b>Curso</b></td>  
-                    <td></td>
                 </tr>
                 <?php while ($dado = $con->fetch_array()){ ?>
                 <tr>                    
@@ -116,16 +138,93 @@
                     <td><?php echo $dado["categoria"]; ?></td>
                     <td><?php echo $dado["regime"]; ?></td>
                     <td><?php echo $dado["curso"]; ?></td>
-                    <td>
-                        <form name="form1" method="post" action="listagem_grade_horas.php">
-                            <input type="hidden" name="valor" value=<?php echo $dado["cod_prof"]; ?>>
-                            <input type="hidden" name="cod_grade" value=<?php echo $dado["cod_grade"]; ?>>
-                            <button type="submit" class="btn btn-xs btn-default">Visualizar</button>  
-                        </form>
-                    </td>
                 </tr>
                 <?php }?>
             </table>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Segunda-Feira</b></td>             
+                    </tr>
+
+                    <?php while ($seg = $con2->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $seg["cod_disc"]; ?>/<?php echo $seg["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Terça-Feira</b></td>             
+                    </tr>
+
+                    <?php while ($ter = $con3->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $ter["hora_inicio"]; ?>/<?php echo $ter["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Quarta-Feira</b></td>             
+                    </tr>
+
+                    <?php while ($qua = $con4->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $qua["hora_inicio"]; ?>/<?php echo $qua["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Quinta-Feira</b></td>             
+                    </tr>
+
+                    <?php while ($qui = $con5->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $qui["hora_inicio"]; ?>/<?php echo $qui["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Sexta-Feira</b></td>             
+                    </tr>
+
+                    <?php while ($sex = $con6->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $sex["hora_inicio"]; ?>/<?php echo $sex["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
+
+            <div class="col-xs-4 col-md-2">
+                <table class="table">
+                    <tr>                    
+                        <td><b>Sábado</b></td>             
+                    </tr>
+
+                    <?php while ($sab = $consab->fetch_array()){ ?> 
+                    <tr>              
+                        <td><?php echo $sab["hora_inicio"]; ?>/<?php echo $sab["hora_termino"]; ?></td>
+                    </tr>
+                    <?php }?>
+                </table>
+            </div>
 
           </div>
 

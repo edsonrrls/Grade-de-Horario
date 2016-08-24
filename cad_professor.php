@@ -96,12 +96,12 @@ include ("conexao.php");
 
             <div class="form-group col-xl-12 col-sm-6 col-md-6">
                 <label for="fone">Telefone:</label>
-                <input type="text" class="form-control" name="fone" required>
+                <input type="Tel" class="form-control" name="fone" required>
             </div>
 
             <div class="form-group col-xl-12 col-sm-6 col-md-6">
                 <label for="email">E-mail Professor:</label>
-                <input type="email" class="form-control" name="email" required>
+                <input type="E-mail" class="form-control" name="email" required>
             </div>
 
             <div class="form-group col-xl-12 col-md-12">
@@ -147,7 +147,9 @@ include ("conexao.php");
 
 				<img src="png/fatec.png" width="200px">
 
-				<p class="footer-company-name">Grade Horários Digital &copy; 2016</p>
+				<p class="footer-company-name">Grade Horários Digital &copy; 2016
+                <br>Edson Asêncio Leal
+                <br>Lucilena de Lima</p>
 				
 			</div>
 

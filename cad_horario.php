@@ -91,11 +91,11 @@ include ("conexao.php");
         <form method="POST" action="processa_cad_horario.php">
             <div class="form-group col-xl-12 col-sm-6 col-md-6">
                 <label for="inicio">Hora de Início da Aula:</label>
-                <input type="datetime" class="form-control" name="hora_ini" required>
+                <input type="time" class="form-control" name="hora_ini" required>
             </div>
             <div class="form-group col-xl-12 col-sm-6 col-md-6">
                 <label for="temino">Hora de Término da Aula:</label>
-                <input type="datetime" class="form-control" name="hora_fim" required>
+                <input type="time" class="form-control" name="hora_fim" required>
             </div>
 
             <div class="form-group col-xl-12 col-sm-6 col-md-6">
@@ -150,7 +150,9 @@ include ("conexao.php");
 
 				<img src="png/fatec.png" width="200px">
 
-				<p class="footer-company-name">Grade Horários Digital &copy; 2016</p>
+				<p class="footer-company-name">Grade Horários Digital &copy; 2016
+                <br>Edson Asêncio Leal
+                <br>Lucilena de Lima</p>
 				
 			</div>
 

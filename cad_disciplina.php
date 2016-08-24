@@ -146,7 +146,9 @@ include ("conexao.php");
 
 				<img src="png/fatec.png" width="200px">
 
-				<p class="footer-company-name">Grade Horários Digital &copy; 2016</p>
+				<p class="footer-company-name">Grade Horários Digital &copy; 2016
+                <br>Edson Asêncio Leal
+                <br>Lucilena de Lima</p>
 				
 			</div>
 

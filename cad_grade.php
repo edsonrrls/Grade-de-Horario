@@ -99,7 +99,7 @@ $consulta = "SELECT * FROM professor";
                     <select class="form-control" name="professor" required>
                         <option value="">Escolha o professor</option>
                         <?php while ($dado = $con->fetch_array()){ ?>
-                        <option value="<?php echo $dado["nome_prof"]; ?>">
+                        <option value="<?php echo $dado["cod_prof"]; ?>">
                             <?php echo $dado["nome_prof"]; ?>                             
                         </option>                    
                         <?php } ?>
@@ -209,7 +209,9 @@ $consulta = "SELECT * FROM professor";
 
 				<img src="png/fatec.png" width="200px">
 
-				<p class="footer-company-name">Grade Horários Digital &copy; 2016</p>
+				<p class="footer-company-name">Grade Horários Digital &copy; 2016
+                <br>Edson Asêncio Leal
+                <br>Lucilena de Lima</p>
 				
 			</div>
 
