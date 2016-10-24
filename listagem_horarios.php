@@ -108,6 +108,8 @@
                     <td><?php echo $dado["hora_inicio"]; ?></td>
                     <td><?php echo $dado["hora_termino"]; ?></td>
                     <td><?php echo $dado["turno"]; ?></td>
+                    <td><button class="btn btn-xs btn-warning">Alterar</button></td>          
+                    <td><button class="btn btn-xs btn-danger">Excluir</button></td> 
 
                 </tr>
                 <?php }?>

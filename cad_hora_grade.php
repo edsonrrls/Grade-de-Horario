@@ -10,8 +10,6 @@ $consulta2 = "SELECT * FROM horario";
 $consulta3 = "SELECT * FROM disciplina";
     $con3 = $mysqli->query($consulta3) or die($mysqli->error);
 
-$consulta4 = "SELECT * FROM horario";
-    $con4 = $mysqli->query($consulta4) or die($mysqli->error);
 ?>
 
 <!DOCTYPE html>
@@ -132,7 +130,7 @@ $consulta4 = "SELECT * FROM horario";
 
                 <select class="form-control" name="turno" required>
                     <option value="">Escolha o turno</option>
-                    <option value="Manhã">Manhã</option>
+                    <option value="Manhã">Manha</option>
                     <option value="Tarde">Tarde</option>
                     <option value="Noite">Noite</option>
                 </select>
@@ -140,24 +138,13 @@ $consulta4 = "SELECT * FROM horario";
             </div>
 
             <div class="form-group col-xl-12 col-md-3 col-sm-3">
-            <label for="curso">Hora de início da aula:</label>
+            <label for="curso">Hora da aula:</label>
 
-                <select class="form-control" name="inicio" required>
+                <select class="form-control" name="hora_aula" required>
                     <option value="">Escolha o horário</option>
-                    <?php while ($ini = $con2->fetch_array()){ ?>
-                        <option value="<?php echo $ini["hora_inicio"]; ?>">
-                            <?php echo $ini["hora_inicio"]; ?>                             
-                        </option>                    
-                        <?php } ?>                       
-                </select>
-
-                <label for="curso">Hora de termino da aula:</label>
-
-                <select class="form-control" name="fim" required>
-                    <option value="">Escolha o horário</option>
-                    <?php while ($fim = $con4->fetch_array()){ ?>
-                        <option value="<?php echo $fim["hora_termino"]; ?>">
-                            <?php echo $fim["hora_termino"]; ?>                             
+                    <?php while ($dado = $con2->fetch_array()){ ?>
+                        <option value="<?php echo $dado["cod_horario"]; ?>">
+                            <?php echo $dado["hora_inicio"]; ?> - <?php echo $dado["hora_termino"]; ?>
                         </option>                    
                         <?php } ?>                       
                 </select>
@@ -167,11 +154,11 @@ $consulta4 = "SELECT * FROM horario";
                 <select class="form-control" name="dia" required>
                     <option value="">Escolha o dia</option>
                     <option value="Segunda-Feira">Segunda-Feira</option>
-                    <option value="Terça-Feira">Terça-Feira</option>
+                    <option value="Terça-Feira">Terca-Feira</option>
                     <option value="Quarta-Feira">Quarta-Feira</option>
                     <option value="Quinta-Feira">Quinta-Feira</option>
                     <option value="Sexta-Feira">Sexta-Feira</option>
-                    <option value="Sábado">Sábado</option>
+                    <option value="Sabado">Sabado</option>
                 </select>
 
 

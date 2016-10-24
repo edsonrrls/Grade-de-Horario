@@ -118,7 +118,7 @@
                     <td><?php echo $dado["curso"]; ?></td>
                     <td>
                         <form name="form1" method="post" action="listagem_grade_horas.php">
-                            <input type="hidden" name="valor" value=<?php echo $dado["cod_prof"]; ?>>
+                            <input type="hidden" name="cod_prof" value=<?php echo $dado["cod_prof"]; ?>>
                             <input type="hidden" name="cod_grade" value=<?php echo $dado["cod_grade"]; ?>>
                             <button type="submit" class="btn btn-xs btn-default">Visualizar</button>  
                         </form>

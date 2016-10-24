@@ -100,15 +100,16 @@
                     <td><b>Código da Disciplina</b></td>
                     <td><b>Nome da Disciplina</b></td>                    
                     <td><b>Nome do Curso</b></td> 
-                    <td><b>Excluir</b></td>
+                   
 
                 </tr>
                 <?php while ($dado = $con->fetch_array()){ ?>
                 <tr>
                     <td><?php echo $dado["cod_disc"]; ?></td>
                     <td><?php echo $dado["nome_disc"]; ?></td>
-                    <td><?php echo $dado["curso_disc"]; ?></td>          
-                    <td><button class="btn btn-danger">X</button></td>                      
+                    <td><?php echo $dado["curso_disc"]; ?></td> 
+                    <td><button class="btn btn-xs btn-warning">Alterar</button></td>          
+                    <td><button class="btn btn-xs btn-danger">Excluir</button></td>                      
                 </tr>
                 <?php }?>
             </table>

@@ -104,6 +104,8 @@ include ("conexao.php");
                 <input type="E-mail" class="form-control" name="email" required>
             </div>
 
+            
+
             <div class="form-group col-xl-12 col-md-12">
               
               <button type="submit" class="btn btn-success">Cadastrar</button>  

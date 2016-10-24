@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Ago-2016 às 16:42
+-- Generation Time: 24-Out-2016 às 15:55
 -- Versão do servidor: 5.7.11
 -- PHP Version: 5.6.19
 
@@ -79,7 +79,12 @@ INSERT INTO `grade` (`cod_grade`, `cod_prof`, `semestre`, `ano`, `validade`, `ca
 (6, 5, '2 Semestre', 2016, '2016-09-01', 'Associado I', 'Hora-Aula', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL),
 (7, 3, '2 Semestre', 2021, '2016-08-23', '55555', 'Jornada', 'Biocombustiveis', NULL),
 (8, 4, '1 Semestre', 2019, '2016-08-24', 'opop', 'Hora-Aula', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL),
-(9, 9, '2 Semestre', 2016, '2016-08-24', 'Aluno', 'Hora-Aula', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL);
+(9, 9, '2 Semestre', 2016, '2016-08-24', 'Aluno', 'Hora-Aula', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL),
+(10, 5, '2 Semestre', 2016, '2016-08-24', '55555', 'RJI', 'Biocombustiveis', NULL),
+(11, 8, '2 Semestre', 2017, '2016-10-05', 'i', 'Hora-Aula', 'EAD - GestÃ£o Empresarial', NULL),
+(12, 4, '2 Semestre', 2016, '2016-10-05', 'xxxxxx', 'Hora-Aula', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL),
+(13, 11, '1 Semestre', 2017, '2017-01-01', 'Receitas', 'Hora-Aula', 'Biocombustiveis', NULL),
+(14, 11, '2 Semestre', 2016, '2016-10-05', 'Receitas', 'RJI', 'AnÃ¡lise e Desenvolvimento de Sistemas', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,8 +94,8 @@ INSERT INTO `grade` (`cod_grade`, `cod_prof`, `semestre`, `ano`, `validade`, `ca
 
 CREATE TABLE `horario` (
   `cod_horario` int(5) NOT NULL,
-  `hora_inicio` varchar(5) COLLATE utf8_bin NOT NULL,
-  `hora_termino` varchar(5) COLLATE utf8_bin NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `hora_termino` time NOT NULL,
   `turno` varchar(50) COLLATE utf8_bin NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
@@ -99,13 +104,14 @@ CREATE TABLE `horario` (
 --
 
 INSERT INTO `horario` (`cod_horario`, `hora_inicio`, `hora_termino`, `turno`) VALUES
-(7, '11:10', '13:00', 'ManhÃ£'),
-(2, '07:00', '8:00', 'ManhÃ£'),
-(3, '7:30', '8:20', 'ManhÃ£'),
-(4, '8:20', '9:10', 'ManhÃ£'),
-(5, '9:20', '10:10', 'ManhÃ£'),
-(6, '10:10', '11:00', 'ManhÃ£'),
-(8, '00:10', '01:50', 'Noite');
+(7, '11:10:00', '13:00:00', 'ManhÃ£'),
+(2, '07:00:00', '08:00:00', 'ManhÃ£'),
+(3, '07:30:00', '08:20:00', 'ManhÃ£'),
+(4, '08:20:00', '09:10:00', 'ManhÃ£'),
+(5, '09:20:00', '10:10:00', 'ManhÃ£'),
+(6, '10:10:00', '11:00:00', 'ManhÃ£'),
+(8, '00:10:00', '01:50:00', 'Noite'),
+(9, '01:10:00', '02:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -117,8 +123,7 @@ CREATE TABLE `hora_aula` (
   `cod_hora_aula` int(5) NOT NULL,
   `cod_grade` int(5) NOT NULL,
   `cod_disc` int(5) NOT NULL,
-  `hora_inicio` varchar(5) COLLATE utf8_bin NOT NULL,
-  `hora_termino` varchar(5) COLLATE utf8_bin NOT NULL,
+  `cod_horario` int(5) NOT NULL,
   `turno` varchar(10) COLLATE utf8_bin NOT NULL,
   `dia_semana` varchar(20) COLLATE utf8_bin NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
@@ -127,24 +132,50 @@ CREATE TABLE `hora_aula` (
 -- Extraindo dados da tabela `hora_aula`
 --
 
-INSERT INTO `hora_aula` (`cod_hora_aula`, `cod_grade`, `cod_disc`, `hora_inicio`, `hora_termino`, `turno`, `dia_semana`) VALUES
-(1, 1, 1, '8:00', '9:00', 'Manhã', ''),
-(2, 1, 1, '9:00', '10:00', 'Manhã', ''),
-(3, 3, 5, '8:00', '9:00', 'Manhã', 'Segunda-Feira'),
-(4, 1, 4, '344', '3434', 'Noite', 'Sexta-Feira'),
-(5, 3, 9, '07:00', '8:00', 'Noite', 'SÃ¡bado'),
-(6, 3, 9, '07:00', '8:00', 'Noite', 'SÃ¡bado'),
-(7, 3, 10, '7:30', '8:20', 'ManhÃ£', 'TerÃ§a-Feira'),
-(8, 1, 2, '8:00', '9:00', 'Manhã', 'Segunda-Feira'),
-(9, 1, 5, '11:00', '12:00', 'Tarde', 'Segunda-Feira'),
-(10, 1, 9, '8:00', '9:00', 'Manhã', 'Sexta-Feira'),
-(11, 1, 5, '12:00', '13:00', 'Manhã', 'Segunda-Feira'),
-(12, 1, 6, '10:00', '11:00', 'Manhã', 'Terça-Feira'),
-(13, 1, 6, '14:00', '15:00', 'Tarde', 'Terça-Feira'),
-(14, 1, 6, '12:00', '13:00', 'Tarde', 'Quinta-Feira'),
-(15, 9, 4, '7:30', '8:20', 'ManhÃ£', 'Segunda-Feira'),
-(16, 9, 7, '11:10', '13:00', 'Tarde', 'Sexta-Feira'),
-(17, 9, 2, '00:10', '01:50', 'Noite', 'Quinta-Feira');
+INSERT INTO `hora_aula` (`cod_hora_aula`, `cod_grade`, `cod_disc`, `cod_horario`, `turno`, `dia_semana`) VALUES
+(1, 1, 1, 0, 'Manhã', ''),
+(2, 1, 1, 0, 'Manhã', ''),
+(3, 3, 5, 0, 'Manhã', 'Segunda-Feira'),
+(4, 1, 4, 0, 'Noite', 'Sexta-Feira'),
+(5, 3, 9, 0, 'Noite', 'SÃ¡bado'),
+(6, 3, 9, 0, 'Noite', 'SÃ¡bado'),
+(7, 3, 10, 0, 'ManhÃ£', 'TerÃ§a-Feira'),
+(8, 1, 2, 0, 'Manhã', 'Segunda-Feira'),
+(9, 1, 5, 0, 'Tarde', 'Segunda-Feira'),
+(10, 1, 9, 0, 'Manhã', 'Sexta-Feira'),
+(11, 1, 5, 0, 'Manhã', 'Segunda-Feira'),
+(12, 1, 6, 0, 'Manhã', 'Terça-Feira'),
+(13, 1, 6, 0, 'Tarde', 'Terça-Feira'),
+(14, 1, 6, 0, 'Tarde', 'Quinta-Feira'),
+(15, 9, 4, 0, 'ManhÃ£', 'Segunda-Feira'),
+(16, 9, 7, 0, 'Tarde', 'Sexta-Feira'),
+(17, 9, 2, 0, 'Noite', 'Quinta-Feira'),
+(18, 10, 7, 0, 'ManhÃ£', 'Sexta-Feira'),
+(19, 7, 7, 5, 'Noite', 'SÃ¡bado'),
+(20, 11, 6, 7, 'ManhÃ£', 'SÃ¡bado'),
+(21, 11, 2, 2, 'Tarde', 'Quinta-Feira'),
+(22, 11, 7, 8, 'Noite', 'Segunda-Feira'),
+(23, 3, 2, 2, 'ManhÃ£', 'Segunda-Feira'),
+(24, 3, 2, 4, 'ManhÃ£', 'Segunda-Feira'),
+(25, 12, 2, 3, 'ManhÃ£', 'TerÃ§a-Feira'),
+(26, 13, 7, 8, 'Noite', 'TerÃ§a-Feira'),
+(27, 13, 7, 8, 'Noite', 'Quarta-Feira'),
+(28, 12, 7, 6, 'ManhÃ£', 'Quarta-Feira'),
+(29, 12, 5, 6, 'Tarde', 'TerÃ§a-Feira'),
+(30, 12, 4, 4, 'Tarde', 'TerÃ§a-Feira'),
+(31, 14, 10, 7, 'Noite', 'SÃ¡bado'),
+(32, 14, 5, 5, 'ManhÃ£', 'SÃ¡bado'),
+(33, 13, 1, 5, 'Noite', 'SÃ¡bado'),
+(34, 14, 7, 5, 'Noite', 'SÃ¡bado'),
+(35, 14, 5, 5, 'Tarde', 'Sexta-Feira'),
+(36, 14, 2, 5, 'Noite', 'SÃ¡bado'),
+(37, 12, 4, 6, 'ManhÃ£', 'Quinta-Feira'),
+(38, 12, 1, 7, 'ManhÃ£', 'Sexta-Feira'),
+(39, 12, 1, 6, 'Noite', 'SÃ¡bado'),
+(40, 9, 3, 5, 'Noite', 'SÃ¡bado'),
+(41, 9, 8, 6, 'Noite', 'Sabado'),
+(42, 9, 10, 3, 'Noite', 'Sexta-Feira'),
+(43, 9, 2, 4, 'Tarde', 'Sabado');
 
 -- --------------------------------------------------------
 
@@ -164,16 +195,7 @@ CREATE TABLE `professor` (
 --
 
 INSERT INTO `professor` (`cod_prof`, `nome_prof`, `fone_prof`, `email_prof`) VALUES
-(1, 'teste', '34566464', 'erewreerr'),
-(2, 'Professor JoÃ£o', '13456789', 'edsonrrls@hotmail.com'),
-(3, 'Testando ', '1899145678', 'lu_lima@terra.com.br'),
-(4, 'Lucilena de Lima', '1899145678', 'lu_lima@terra.com.br'),
-(5, 'Edson', '1899145678', 'edson@yahho.com'),
-(6, 'Edson 2', '18991114346', 'edson@yahho.com'),
-(7, 'Fernando CÃ©sar Balbino', '18991114346', 'fernando@gmail.com'),
-(8, 'professor X', '455655543', 'professor_X@bol.com'),
-(9, 'Edson AsÃªncio Leal', '18991114346', 'edsonasencioleal@gmail.com'),
-(10, 'lÃ§lk', 'lÃ§l', 'jkj');
+(9, 'Edson AsÃªncio Leal', '18991114346', 'edsonasencioleal@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -222,22 +244,22 @@ ALTER TABLE `disciplina`
 -- AUTO_INCREMENT for table `grade`
 --
 ALTER TABLE `grade`
-  MODIFY `cod_grade` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cod_grade` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `horario`
 --
 ALTER TABLE `horario`
-  MODIFY `cod_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cod_horario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `hora_aula`
 --
 ALTER TABLE `hora_aula`
-  MODIFY `cod_hora_aula` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `cod_hora_aula` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 --
 -- AUTO_INCREMENT for table `professor`
 --
 ALTER TABLE `professor`
-  MODIFY `cod_prof` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cod_prof` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

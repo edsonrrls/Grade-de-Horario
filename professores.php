@@ -108,12 +108,26 @@
                     <td><?php echo $dado["nome_prof"]; ?></td>
                     <td><?php echo $dado["fone_prof"]; ?></td>
                     <td><?php echo $dado["email_prof"]; ?></td>
+                    <td>
+                        <form name="formaltera" method="post" action="listagem_grade_horas.php">
+                            <input type="hidden" name="cod_prof" value=<?php echo $dado["cod_prof"]; ?>>
+                            <button type="submit" class="btn btn-xs btn-warning">Alterar</button>
+                        </form>
+                    </td>          
+                    <td>
+                        <form name="formexclui" method="post" action="processa_exc_prof.php">
+                            <input type="hidden" name="cod_prof" value=<?php echo $dado["cod_prof"]; ?>>
+                            <button type="submit" class="btn btn-xs btn-danger">Excluir</button>  
+                        </form>
+                    </td> 
 
                 </tr>
                 <?php }?>
             </table>
 
           </div>
+
+          
 
 		</div>
 
