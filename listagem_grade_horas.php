@@ -134,6 +134,9 @@
 		
 			  
             <table class="table table-bordered">
+                <tr>
+                    <img src="png/cabecalho.png">
+                </tr>
                 <tr>                    
                     <td><b>Código da grade</b></td>                                        
                     <td><b>Professor</b></td>   
@@ -240,12 +243,115 @@
                     </tr>
                     <?php }?>
                 </table>
-            </div>
 
-          </div>
+            </div>  
+        </div>     
+
+        <div class="panel-body col-xs-12 col-md-6">    
+
+                <table class="table table-bordered">
+                
+                <tr>           
+                    <td><b><center>C</center></b></td>                                
+                    <td colspan="4"><b><center>HAE - RJI - JORNADA</center></b></td>                                        
+                    <td colspan="1"><b><center>Nº Horas Semanais</center></b></td>                                                             
+                                         
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>1.</b> Diretor e Vice-Diretor da Faculdade</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>2.</b> Acessoria ao CEETPS</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>3.</b> Acessoria à Diretoria da Fatec</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>4.</b> Chefia de Departamento</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>5.</b> Responsabilidade por Curso em Implantação</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>6.</b> Responsabilidade por Disciplina (2ª a 6ª feira)</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>7.</b> Coordenação de Oficinas e Laboratórios</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>8.</b> Grupo de Estudos (2ª a 6ª feira)</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+                <tr>                    
+                    <td colspan="5"><b>9.</b> Pesquisa Individual (2ª a 6ª feira)</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+
+                 <tr>                    
+                    <td colspan="5"><b>10.</b> Outros (2ª a 6ª feira)</td>                                        
+                    <td colspan="1">---</td>                                    
+                </tr>
+               
+            </table>
+
+        </div>
+
+        <div class="panel-body col-xs-12 col-md-6">    
+
+                <table class="table table-bordered">
+                
+                <tr>      
+                    <td colspan="2"><b><center>D</center></b></td>                                        
+                    <td colspan="2"><b><center>QUADRO RESUMO</center></b></td>    
+                </tr>
+                <tr>
+                    <td colspan="4"><b><center>ATIVIDADES</center></b></td>
+                    <td><b><center>Nº SEMANAL </center></b></td>
+                    <td><b><center>Nº MENSAL</center></b></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>Hora-Aula</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>Hora-Atividade</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>H.A.E.</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>R.J.I.</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>Jornada</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+                <tr>
+                    <td colspan="4"><center>TOTAL GERAL (HORAS)</center></td>
+                    <td><center>---</center></td>
+                    <td><center>---</center></td>
+                </tr>
+        </table>
+        </div>        
 
 		</div>
 
+        <a class="baixar" href="javascript:self.print()" name="baixar" type="button" value="Baixar">Baixar</a>
     <!-- fim container -->
 
     <footer class="footer-distributed">

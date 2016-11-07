@@ -3,6 +3,7 @@
 
     $consulta = "SELECT * FROM professor";
     $con = $mysqli->query($consulta) or die($mysqli->error);
+
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +102,7 @@
                     <td><b>Nome do Professor</b></td>                    
                     <td><b>Telefone</b></td>   
                     <td><b>E-Mail</b></td>   
+                    <td colspan="2"><b>Ações</b></td>
                 </tr>
                 <?php while ($dado = $con->fetch_array()){ ?>
                 <tr>
@@ -108,11 +110,50 @@
                     <td><?php echo $dado["nome_prof"]; ?></td>
                     <td><?php echo $dado["fone_prof"]; ?></td>
                     <td><?php echo $dado["email_prof"]; ?></td>
-                    <td>
-                        <form name="formaltera" method="post" action="listagem_grade_horas.php">
-                            <input type="hidden" name="cod_prof" value=<?php echo $dado["cod_prof"]; ?>>
-                            <button type="submit" class="btn btn-xs btn-warning">Alterar</button>
-                        </form>
+                    <td>                        
+
+                    <form name="formedit" method="post" action="processa_edit_prof.php">                       
+                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal<?php echo $dado["cod_prof"]; ?>">Alterar</button>
+                    </form>
+                       
+                        <!-- Modal -->
+                          <div class="modal fade" id="myModal<?php echo $dado["cod_prof"]; ?>" role="dialog">
+                            <div class="modal-dialog">
+                            
+                        
+                              <!-- Modal content-->
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                  <h5 class="modal-title">Alterar professor:</h5>
+                                </div>
+                                    
+                                    <form method="POST" action="processa_edit_prof.php">
+                                        <div class="form-group col-xl-12 col-sm-6 col-md-6">
+                                            <label for="nome">Nome Professor:</label>
+                                            <input type="text" class="form-control" name="nome" id="nome" value="<?php echo $dado["nome_prof"]; ?>" required>
+                                        </div>
+
+                                        <div class="form-group col-xl-12 col-sm-6 col-md-6">
+                                            <label for="fone">Telefone:</label>
+                                            <input type="Tel" class="form-control" name="fone" value="<?php echo $dado["fone_prof"]; ?>" required>
+                                        </div>
+
+                                        <div class="form-group col-xl-12 col-sm-6 col-md-6">
+                                            <label for="email">E-mail Professor:</label>
+                                            <input type="E-mail" class="form-control" name="email" value="<?php echo $dado["email_prof"]; ?>" required>
+                                        </div>
+              
+                                    </form>
+
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                                      <button type="button" class="btn btn-success" data-dismiss="modal">Salvar</button>
+                                    </div>
+                             </div>
+                          </div>
+                         </div>
+
                     </td>          
                     <td>
                         <form name="formexclui" method="post" action="processa_exc_prof.php">

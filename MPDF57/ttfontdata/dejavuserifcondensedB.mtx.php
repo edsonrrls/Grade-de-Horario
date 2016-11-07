@@ -13,7 +13,7 @@ $desc=array (
 );
 $up=-63;
 $ut=44;
-$ttffile='C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/grade/pdf/ttfonts/DejaVuSerifCondensed-Bold.ttf';
+$ttffile='C:/Program Files (x86)/EasyPHP-Devserver-16.1/eds-www/grade/MPDF57/ttfonts/DejaVuSerifCondensed-Bold.ttf';
 $TTCfontID='0';
 $originalsize=283140;
 $sip=false;
